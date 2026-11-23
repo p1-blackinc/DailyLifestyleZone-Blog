@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<base href="/us/lp1/">
+<title>Maria's Hand-Tuned Rain Drum – Made Special</title>
+<!-- Whop Ads pixel for this page only. One async s.js; setScope sends each event to both accounts. -->
+<script>!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope("biz_w7eYKdEDa6Cf8Q","biz_6LDY4La45j4N8q");whop.track("page");</script>
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<script>
+/* >> TriplePixel :: start*/
+window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SHOPIFY",isHeadless:true},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","text/plain")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes("/first")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1,L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(E=A[H]=function(t,e,a){return void 0===a&&(a=[]),"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),O("https://api.config-security.com/first?host=0muhvz-sr.myshopify.com&plat=SHOPIFY",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+<!-- snapchat click track id -->
+
+<script>
+  // Also used on the landers (lp1 and uk/lp1). Load it as early as possible.
+  // The same script is inlined in theme/snap-click-id.liquid for the Shopify theme.
+  // Snap ads land with ?ScCid=. The pixel only reads that param on the domain it runs on,
+  // and the store is a different domain from the lander, so the id has to be carried across.
+  //
+  // v2: the lander also carries utm_*, Snap (ScCid), TikTok (ttclid), Pinterest (epik),
+  // Meta (fbclid), AppLovin (aleid, alart, axeid), Google/Microsoft/Reddit/X click ids,
+  // tw_*, ref_id, cmpid and the RedTrack click (rtkcid) onto the product URL.
+  // Before v2 only ScCid crossed the lander -> store hop, so TikTok's ttclid never
+  // reached the store, its storage, the checkout payload or the order.
+  (function () {
+    var DAYS = 28, MAX_AGE = String(DAYS * 86400);
+    var STORE = /(^|\.)madespecial\.store$|\.myshopify\.com$/i;
+    var CLICK_PARAM = /^(?:sccid|sc_click_id)$/i;
+  
+    function good(v) {
+      v = String(v == null ? "" : v).trim();
+      if (v.length < 8 || v.length > 500) return "";
+      if (/[\s{}<>]/.test(v) || /^(undefined|null|none|n\/a)$/i.test(v)) return "";
+      return v;
+    }
+    function cookieGet(name) {
+      var m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)"));
+      if (!m) return "";
+      try { return good(decodeURIComponent(m[1])); } catch (e) { return ""; }
+    }
+    function storageGet(name) {
+      try {
+        var exp = Number(localStorage.getItem(name + "_exp") || 0);
+        if (exp && Date.now() > exp) { localStorage.removeItem(name); localStorage.removeItem(name + "_exp"); return ""; }
+        return good(localStorage.getItem(name));
+      } catch (e) { return ""; }
+    }
+    function persist(name, value) {
+      if (!value) return;
+      var secure = location.protocol === "https:" ? "; Secure" : "";
+      document.cookie = name + "=" + encodeURIComponent(value) + "; Max-Age=" + MAX_AGE + "; Path=/; SameSite=Lax" + secure;
+      try {
+        localStorage.setItem(name, value);
+        localStorage.setItem(name + "_exp", String(Date.now() + DAYS * 864e5));
+      } catch (e) {}
+    }
+    function fromUrl(url, re) {
+      try {
+        var out = "";
+        new URL(url, location.href).searchParams.forEach(function (v, k) { if (!out && re.test(k)) out = good(v); });
+        return out;
+      } catch (e) { return ""; }
+    }
+    // Click id and the pixel cookie are different. Never write the click id into _scid.
+    var click = fromUrl(location.href, CLICK_PARAM) || cookieGet("ScCid") || storageGet("ScCid") || cookieGet("_scclid") || fromUrl(document.referrer, CLICK_PARAM);
+    var cookie1 = cookieGet("_scid") || fromUrl(location.href, /^_scid$|^sc_cookie1$/i) || storageGet("_scid") || fromUrl(document.referrer, /^_scid$/i);
+    if (click) persist("ScCid", click);
+    if (cookie1 && cookie1 !== click) persist("_scid", cookie1);
+  
+    var onStore = STORE.test(location.hostname);
+    if (onStore && click) {
+      try {
+        var cur = new URL(location.href);
+        var had = false;
+        cur.searchParams.forEach(function (v, k) { if (CLICK_PARAM.test(k) && good(v)) had = true; });
+        var handoff = cur.searchParams.has("_scid") || cur.searchParams.has("sc_cookie1");
+        if (!had) cur.searchParams.set("ScCid", click);
+        cur.searchParams.delete("_scid");
+        cur.searchParams.delete("sc_cookie1");
+        if (!had || handoff) history.replaceState(null, "", cur.pathname + cur.search + cur.hash);
+      } catch (e) {}
+    }
+  
+    // ---- v2: carry the other ad params across the lander -> store hop ----
+    var CARRY_KEY = "ms_carry", CARRY_DAYS = 30;
+    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid|wacid|wasid|waid)$/i;
+    function okVal(v) {
+      v = String(v == null ? "" : v).trim();
+      if (!v || v.length > 500) return "";
+      if (/^(undefined|null|none|n\/a)$/i.test(v)) return "";
+      if (/^__[A-Z0-9_]+__$/i.test(v) || /[{}<>\u0000-\u001f\u007f]/.test(v)) return ""; // unfilled ad macros, junk
+      return v;
+    }
+    var carry = { p: {} };
+    try {
+      var saved = JSON.parse(localStorage.getItem(CARRY_KEY) || "null");
+      if (saved && saved.p && saved.exp > Date.now()) carry = saved;
+    } catch (e) {}
+    var carryChanged = false;
+    try {
+      new URL(location.href).searchParams.forEach(function (v, k) {
+        if (!CARRY.test(k)) return;
+        v = okVal(v);
+        if (v && carry.p[k] !== v) { carry.p[k] = v; carryChanged = true; } // newest non-blank wins, blanks never overwrite
+      });
+    } catch (e) {}
+    if (carryChanged) {
+      carry.exp = Date.now() + CARRY_DAYS * 864e5;
+      try { localStorage.setItem(CARRY_KEY, JSON.stringify(carry)); } catch (e) {}
+    }
+    function addCarry(u) {
+      var rt = cookieGet("rtkclickid-store");
+      if (rt && !okVal(u.searchParams.get("rtkcid"))) u.searchParams.set("rtkcid", rt);
+      Object.keys(carry.p).forEach(function (k) {
+        if (!okVal(u.searchParams.get(k))) u.searchParams.set(k, carry.p[k]); // never replace a real value already on the link
+      });
+    }
+  
+    function decorate(href) {
+      var u;
+      try { u = new URL(href, location.href); } catch (e) { return href; }
+      if (u.protocol !== "https:" && u.protocol !== "http:") return href;
+      var toStore = STORE.test(u.hostname);
+      if (!toStore && u.origin !== location.origin) return href;
+      var id = cookieGet("ScCid") || storageGet("ScCid") || click;
+      var c1 = cookieGet("_scid") || storageGet("_scid");
+      if (id) {
+        var has = false;
+        u.searchParams.forEach(function (v, k) { if (CLICK_PARAM.test(k) && good(v)) has = true; });
+        if (!has) u.searchParams.set("ScCid", id);
+      }
+      // The store cannot read the lander's _scid cookie. Hand it over once; the store script saves it and strips the param.
+      if (toStore && !onStore && c1 && !u.searchParams.get("_scid")) u.searchParams.set("_scid", c1);
+      // On the lander, the store also needs ttclid / epik / utm_* / ref_id / rtkcid. On the store the theme script keeps them.
+      if (toStore && !onStore) addCarry(u);
+      return u.toString();
+    }
+    function paint() {
+      var links = document.getElementsByTagName("a");
+      for (var i = 0; i < links.length; i++) {
+        var href = links[i].getAttribute("href");
+        if (!href || href.charAt(0) === "#") continue;
+        var next = decorate(href);
+        if (next && next !== href) links[i].setAttribute("href", next);
+      }
+    }
+    document.addEventListener("click", function (e) {
+      var n = e.target;
+      while (n && n !== document) {
+        if (n.tagName === "A" && n.href) {
+          var next = decorate(n.href);
+          if (next && next !== n.href) n.href = next;
+          return;
+        }
+        n = n.parentNode;
+      }
+    }, true);
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", paint);
+    else paint();
+    // Lander buttons that navigate with JavaScript instead of a link can use: location.href = window.MSCarry(url)
+    window.MSCarry = decorate;
+  })();
+  </script>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fdfcf8; --cream:#f5efe5; --rule:#d4c4a8;
+    --ink:#1a1a1a; --muted:#8b8378; --brown:#5a3a26;
+    --accent:#3b5323; --accent-dark:#2c3f1a; --gold:#b08a3e;
+    --serif:"Source Serif 4","Source Serif Pro",Georgia,serif;
+    --sans:"Source Sans 3","Source Sans Pro",-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink)}
+  body{font-family:var(--sans);font-size:20px;line-height:1.7;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+  .adv-wrap{max-width:720px;margin:0 auto;background:var(--paper);padding:24px 24px 48px}
+
+  .masthead{text-align:center;padding-top:8px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+  .masthead img{display:block;width:100%;max-width:260px;height:auto;margin:0 auto 8px}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--brown);margin:0 0 20px;text-wrap:balance}
+  .ad-label{font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;text-align:center;color:var(--muted);padding-bottom:10px;border-bottom:1px solid var(--rule);margin:0 0 24px}
+
+  h1{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.25;margin:0 0 18px;letter-spacing:0}
+  h2{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1.3;margin:48px 0 18px;letter-spacing:0}
+  p{margin:0 0 22px}
+  .byline{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 24px}
+  .lead{font-size:23px;line-height:1.6}
+  .dek{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--brown);margin:0 0 14px}
+  .weather-list{margin:0 0 22px;padding-left:24px}
+  .weather-list li{margin:0 0 10px;padding-left:4px}
+  .weather-list li::marker{color:var(--accent)}
+  .mech-text strong{color:var(--brown)}
+  .deck{font-family:var(--serif);font-size:23px;line-height:1.5;color:#3d3d3d;margin:0 0 18px}
+  .weather{margin:0 0 14px;padding-left:18px;border-left:2px solid var(--rule)}
+  .benefit{display:block;margin-top:8px;font-style:italic;color:var(--brown)}
+
+  .media{position:relative;width:100%;aspect-ratio:16/9;background:var(--cream);border-radius:2px;overflow:hidden;margin:8px 0 10px}
+  .media.portrait{aspect-ratio:9/16;margin:0}
+  .media .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:14px;line-height:1.5;color:var(--muted)}
+  .media .ph b{display:block;color:var(--brown);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+  .media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .caption{font-size:14px;line-height:1.5;color:var(--muted);margin:0 0 28px}
+
+  .video-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0 12px}
+  .video-pair .caption{margin:8px 0 0}
+  .video-pair[hidden]{display:none}
+
+  .pull-quote{font-family:var(--serif);font-style:italic;font-size:27px;line-height:1.45;color:var(--brown);border-left:4px solid var(--accent);padding:8px 0 8px 24px;margin:32px 0}
+  .quote-block{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.55;color:var(--brown);border-left:3px solid var(--accent);padding:4px 0 4px 22px;margin:22px 0}
+
+  .mech{background:var(--cream);border-left:3px solid var(--accent);border-radius:0 4px 4px 0;padding:22px 24px;margin:0 0 18px}
+  .mech-name{font-family:var(--serif);font-weight:700;font-size:21px;color:var(--brown);margin:0 0 8px}
+  .mech-text{font-size:19px;margin:0}
+
+  .cta{background:var(--cream);border:1px solid var(--rule);border-radius:4px;padding:32px 24px;margin:40px 0;text-align:center}
+  .cta-lead{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--brown);margin:0 0 18px}
+  .cta-btn{display:inline-block;background:var(--accent);color:var(--paper);font-weight:700;font-size:19px;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;padding:16px 36px;border-radius:3px;transition:background .15s}
+  .cta-btn:hover{background:var(--accent-dark)}
+  .cta-sub{font-size:14px;color:var(--muted);margin:10px 0 0}
+
+  .review{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:22px 24px;margin:0 0 18px}
+  .stars{color:var(--gold);font-size:17px;letter-spacing:2px;margin:0 0 8px}
+  .review-text{font-style:italic;font-size:19px;margin:0 0 12px}
+  .review-author{font-size:14px;font-weight:600;color:var(--muted);margin:0}
+  .review.slot .review-text{color:var(--muted)}
+
+  .faq-item{border-bottom:1px solid var(--rule);padding:20px 0}
+  .faq-q{font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.35;margin:0 0 10px}
+  .faq-a{font-size:19px;margin:0}
+
+  .site-footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--rule);text-align:center;font-size:13px;line-height:1.6;color:var(--muted)}
+  .site-footer nav{margin:0 0 12px}
+  .site-footer button{background:none;border:0;padding:4px 6px;font:inherit;font-weight:600;color:var(--brown);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .site-footer button:hover{color:var(--accent)}
+  .site-footer p{margin:0 0 8px}
+
+  dialog.legal{width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 48px);padding:0;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  dialog.legal::backdrop{background:rgba(26,26,26,.55)}
+  .legal-head{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;background:var(--paper);border-bottom:1px solid var(--rule)}
+  .legal-head h2{margin:0;font-size:22px}
+  .legal-close{flex:none;width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;background:var(--cream);font-size:20px;line-height:1;color:var(--brown);cursor:pointer}
+  .legal-close:hover{background:var(--rule)}
+  .legal-body{padding:20px 24px 28px;font-size:15px;line-height:1.65;overflow-y:auto;max-height:calc(100vh - 130px)}
+  .legal-body h3{font-family:var(--serif);font-size:17px;margin:22px 0 6px}
+  .legal-body p,.legal-body ul{margin:0 0 12px}
+  .legal-body ul{padding-left:20px}
+  .legal-body .eff{color:var(--muted);font-size:13px}
+
+  @media (max-width:600px){
+    .adv-wrap{padding:12px 16px 40px}
+    .masthead{padding-top:0}
+    .eyebrow{font-size:10px;letter-spacing:2.5px;margin:0 0 8px}
+    .masthead img{max-width:200px;margin:0 auto 6px}
+    .tagline{font-size:13.5px;line-height:1.4;margin:0 0 12px}
+    .ad-label{font-size:9px;padding-bottom:8px;margin:0 0 16px}
+    h1{margin:0 0 12px}
+    .byline{font-size:12px;margin:0 0 16px}
+    body{font-size:18px}
+    h1{font-size:30px}
+    h2{font-size:25px}
+    .lead{font-size:20px}
+    .dek{font-size:16.5px;line-height:1.45;margin:0 0 10px}
+    .pull-quote{font-size:19px;padding-left:18px}
+    .quote-block{font-size:19px}
+    .mech-text{font-size:17px}
+    .video-pair{gap:10px}
+  }
+
+  .scroll-progress{position:fixed;top:0;left:0;right:0;z-index:40;height:5px;background:rgba(241,158,77,.22);pointer-events:none}
+  .scroll-progress span{display:block;height:100%;width:100%;background:#f19e4d;transform:scaleX(0);transform-origin:left center}
+</style>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<script>
+  (function(){
+    var fill=document.querySelector('.scroll-progress span');
+    if(!fill) return;
+    var ticking=false;
+    function update(){
+      var el=document.documentElement;
+      var max=el.scrollHeight-el.clientHeight;
+      var t=max>0?Math.min(1,Math.max(0,el.scrollTop/max)):0;
+      fill.style.transform='scaleX('+Math.pow(t,0.4)+')';
+      ticking=false;
+    }
+    function onScroll(){
+      if(ticking) return;
+      ticking=true;
+      requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    update();
+  })();
+</script>
+<main class="adv-wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Issue No. 7 — Fall 2026</p>
+    <img src="assets/madespecial-logo.avif" alt="Made Special">
+    <p class="tagline">Stories about the small things that make ordinary days better</p>
+  </header>
+
+  <p class="ad-label">Advertisement</p>
+
+  <h1>She Forgot a Piece of Steel Out in the Rain. Two Months Later, She Heard It Singing.</h1>
+
+  <p class="dek">For ten years, a 68-year-old Port Townsend, Washington-based metal artist has made only one thing, an instrument no human plays. The batch on her bench right now is the last one her hands will ever tune.</p>
+  <p class="byline">Port Townsend, Washington. By Anna Reeves, Contributing Editor</p>
+
+  <figure style="margin:0">
+    <div class="media" style="min-height: 500px;"">
+      <img src="assets/01-hero.jpg" alt="Maria Hartwell in her workshop holding a hand-tuned rain drum" onerror="this.remove()">
+    </div>
+  </figure>
+
+  <p class="pull-quote">"I have shaped steel for thirty years. The rain drum is the one piece I do not finish — the sky finishes it."</p>
+  <p class="lead">There's a sound you can only hear just outside Port Townsend, and only when it rains.</p>
+  <p>It comes from a tree stump behind a wooden cabin near Chimacum Creek. When a storm rolls in, the stump starts to play music: clean, bright notes, one for every raindrop, with nobody touching it.</p>
+  <p>The woman who made it is Maria Hartwell. She's 68 and has worked a steel forge on the side of that cabin since 1991: gates, weather vanes, copper birdbaths, garden sculptures. For the last ten years she has made only this.</p>
+  <p>She doesn't play them. She tunes them, sets them outside and lets the sky do the rest.</p>
+  <p>Right now there's one final batch on her bench. When it's gone, she's done. Her hands have made that decision for her.</p>
+  <p>But to understand why people write to her years later, you have to go back to the afternoon she walked out of the forge and heard steel singing in the rain.</p>
+  <h2>The Sculpture She Forgot to Bring Inside</h2>
+  <p>It was the middle of an October storm in 2015. Maria was at the anvil when she heard a sound she didn't recognise coming from the yard. It wasn't wind, and it wasn't a gutter. It was music.</p>
+  <p>She put the hammer down and walked outside.</p>
+  <p>On the tree stump behind the forge sat a flat steel disc she'd cut two months earlier: five tongues, a wind catcher commissioned for a customer's garden gate. It hadn't caught the wind the way she wanted. In August she'd set it on the stump to think about it, and then forgot it was there.</p>
+  <p>The rain had found it. Every drop that hit a tongue rang out as a clear, pitched note. Five notes, all clean. The rain was playing her sculpture.</p>
+
+  <figure style="margin:0">
+    <div class="media">
+      <img src="assets/02-fencepost.jpg" alt="The tree stump in Maria&#x27;s back garden where she first heard the rain play steel" onerror="this.remove()">
+    </div>
+    <p class="caption">The tree stump in Maria's back garden, the spot where she first heard the rain play steel.</p>
+  </figure>
+
+  <p class="quote-block">"I had been making things that stood in gardens for twenty-five years. None of them had ever made a sound. The one I forgot on the tree stump made music. I went back into the forge that afternoon and started cutting the next one."</p>
+  <p>By November she had finished her first true rain drum: nine tongues, tuned to the pentatonic scale, set on the same stump. It's still there. By 2017, her forge made nothing else.</p>
+  <p>So what does it actually sound like when the weather plays one?</p>
+  <h2>What You'll Hear From Your Window</h2>
+  <p>Forget wind chimes. A wind chime is noise. This is closer to a song.</p>
+  <p>Each raindrop sounds a single, clean note. Because the nine tongues are tuned to the pentatonic scale, there's no such thing as a wrong note. A drop on the F-tongue rings F. A drop on the C-tongue rings C. Whatever the sky sends, it comes out in harmony.</p>
+  <p>Every kind of weather plays it differently:</p>
+  <ul class="weather-list">
+    <li>A light rain gives three or four notes a minute, with long, soft silences between, like someone thinking out loud.</li>
+    <li>A steady rain gives fifteen or twenty notes a minute that never trip over each other.</li>
+    <li>A thunderstorm sets its own rhythm, and the drum plays the notes.</li>
+  </ul>
+
+  <div class="video-pair">
+    <figure style="margin:0">
+      <div class="media portrait">
+        <video src="assets/video-1.mp4" poster="assets/video-1-poster.jpg" playsinline controls preload="none"></video>
+      </div>
+      <p class="caption">On the tree stump — tap to hear the rain play it.</p>
+    </figure>
+    <figure style="margin:0">
+      <div class="media portrait">
+        <video src="assets/video-2.mp4" poster="assets/video-2-poster.jpg" playsinline controls preload="none"></video>
+      </div>
+      <p class="caption">On the garden table — tap to listen.</p>
+    </figure>
+  </div>
+
+  <p class="pull-quote">"A piano is played by a person. A rain drum is played by the weather. I never met a player as patient as good old Pacific Northwest weather."</p>
+  <p>Maria's own drum has sat on that stump for ten years and has never once come inside. When the clouds roll in, she makes a cup of tea, sits at the kitchen window and waits.</p>
+  <p>Picture that at your own window. Grey afternoons used to be something to get through. Now there's something you look forward to.</p>
+
+  <figure style="margin:0">
+    <div class="media" style="min-height: 500px;">
+      <img src="assets/03-window.jpg" alt="Maria at the kitchen window with a cup of tea, watching the rain" onerror="this.remove()">
+    </div>
+    <p class="caption">"When the clouds come in, she sits at the kitchen window with a cup of tea, and waits."</p>
+  </figure>
+
+  <p>Maria isn't the only one waiting by the window. She has a box full of proof.</p>
+  <h2>The Wooden Box on the Shelf Above the Bench</h2>
+  <p>Above Maria's tuning bench sits a plain wooden box. Inside are a few hundred letters: cards, short notes, pages torn from notebooks, the odd Polaroid. Every one is from someone whose drum the rain has played.</p>
+  <p>"I don't go through them often," she said. "Every now and then, when I am stuck on a tongue I can't seem to file right, I open it."</p>
+  <p>She took the box down and pulled out three.</p>
+
+  <figure style="margin:0">
+    <div class="media">
+      <img src="assets/04-letters.jpg" alt="Letters from rain drum owners on the shelf above Maria&#x27;s tuning bench" onerror="this.remove()">
+    </div>
+    <p class="caption">A few hundred letters in a wooden box on the shelf above the tuning bench.</p>
+  </figure>
+
+  <p>The first was from Helen, in Brattleboro, Vermont. Last March she set her drum on a tree stump in the corner of her back garden. Two weeks later the first spring rain came. Helen texted her granddaughter from the kitchen window, then printed a screenshot of the text, taped it inside a card and mailed it to Maria. It said: "The garden is playing music."</p>
+  <p>"That one I keep on top of the stack," Maria said.</p>
+  <p>The second was from Marcus, 47, in Brooklyn. His drum lives on the third-floor balcony of his walk-up. He wrote about the first summer thunderstorm to catch it: late at night, half an inch of rain in twenty minutes. He opened the balcony door and stood barefoot in the doorway for the whole storm.</p>
+  <p class="quote-block">"He wrote me that it sounded like the building was being tuned from above. I have never been to Brooklyn. I picture his building every time it rains."</p>
+  <p>The third was a folded card from Carol, on a screened porch in Camden, Maine. She'd set her drum on the wide arm of a rocking chair and never moved it. The card held one sentence, in blue ballpoint pen:</p>
+  <p class="pull-quote">"It is the only thing in my yard that gets better when the sky turns dark."</p>
+  <p>Maria laid the three cards back in the box and slid it onto the shelf.</p>
+  <p>"That last one I think about when I am tuning," she said. "You can build a thing for thirty years and not have anyone say it back to you that clean."</p>
+  <h2>Why a Factory Drum Can't Do This</h2>
+  <figure style="margin:0">
+    <div class="media">
+      <img src="assets/05-closeup.jpg" alt="Raindrops landing on the tuned steel tongues of a rain drum" onerror="this.remove()">
+    </div>
+    <p class="caption">A single raindrop produces a single note. Pentatonic tuning means it cannot land wrong.</p>
+  </figure>
+
+  <p>You can find stamped steel "rain drums" on Amazon. Here are the five things Maria does that a factory doesn't, and what each one means for you.</p>
+
+  <div class="mech">
+    <p class="mech-name">1. The Pentatonic Promise: no wrong note, ever.</p>
+    <p class="mech-text">All nine notes sit in the pentatonic scale, so every drop works with every other. <strong>What it means for you:</strong> it sounds lovely in a drizzle and in a downpour. Without this, it's just steel with rain on it.</p>
+  </div>
+
+  <div class="mech">
+    <p class="mech-name">2. The 432Hz Calibration: a softer, warmer tone.</p>
+    <p class="mech-text">Maria tunes every drum to A=432Hz instead of the standard 440Hz. That's eight cycles lower, the tuning many singing-bowl makers prefer. <strong>What it means for you:</strong> a gentler ring that suits a quiet garden rather than cutting through it.</p>
+  </div>
+
+  <div class="mech">
+    <p class="mech-name">3. Weather-Hardened Steel: it lives outside.</p>
+    <p class="mech-text">Powder-coated carbon steel, finished against rust and UV. <strong>What it means for you:</strong> set it out once and leave it there. Maria's own has lived on the same stump for ten years.</p>
+  </div>
+
+  <div class="mech">
+    <p class="mech-name">4. The Chimacum Creek Anchor: tested by her own hand, one drum at a time.</p>
+    <p class="mech-text">Before any drum leaves the bench, Maria checks its tuning against a small grey river stone she keeps in her apron pocket. She picked it up on a walk along the Chimacum Creek in 2021, and it rings a quarter-tone between F and F-sharp. What it means for you: the drum you receive has been in her hands.</p>
+  </div>
+
+  <div class="mech">
+    <p class="mech-name">5. The Folded Note: one sentence, written for your drum.</p>
+    <p class="mech-text">Tucked in each cloth pouch is a handwritten note from Maria, one sentence she chose for that drum on the day she finished it. <strong>What it means for you:</strong> a gift that arrives with a story already inside it.</p>
+  </div>
+
+  <h2>Why There Won't Be Another Batch</h2>
+  <p>By spring 2025, Maria's hands had started telling her something she'd been trying not to hear.</p>
+  <p>The finest part of the work is filing each tongue to the millimetre until it rings true, and her hands could no longer hold steady for it. Some mornings they still could. Most mornings they couldn't.</p>
+  <p class="pull-quote">"You can teach a hand to forge a gate. You can't teach a hand to tune one. Mine is done with the fine work."</p>
+
+  <figure style="margin:0">
+    <div class="media">
+      <img src="assets/06-hands.jpg" alt="Maria&#x27;s hands at her workbench during a final tuning check" onerror="this.remove()">
+    </div>
+    <p class="caption">Maria's final tuning check: the small grey Chimacum Creek river stone she has kept in her apron pocket since 2021.</p>
+  </figure>
+
+  <p>So this batch, the one on her bench right now, is the last. She has tuned every drum in it herself. When it's gone, she puts the tuning hammer down for good.</p>
+  <p>A hand-tuned steel rain drum from a luthier costs four hundred dollars and up. Maria is selling her final run at cost.</p>
+  <p>Two collectors from Manhattan asked to buy the batch. A wholesale buyer from Boston asked too. She said no to all three.</p>
+  <p class="quote-block">"I don't need the money. I need them to be played by the weather. A drum that sits on a collector's shelf is a closed door."</p>
+  <p>She wants them in gardens, on porches and on balcony rails. She wants them where the rain can reach.</p>
+  <p>Once this batch is gone, there won't be another drum tuned by Maria's hands.</p>
+
+  <div class="cta">
+    <p class="cta-lead">While the last batch remains:</p>
+    <a class="cta-btn" href="https://track.lovethenew.me/click" rel="nofollow">Check Availability</a>
+    <p class="cta-sub">The last hand-tuned rain drums from Maria's forge, while they remain.</p>
+  </div>
+
+  <h2>What They Wrote Maria After Their First Storm</h2>
+  <p>Here's what happened when the first rain came for three of her customers.</p>
+  <div class="review">
+    <p class="stars">★★★★★</p>
+    <p class="review-text">"I set it on a stump in the back garden the day it arrived. Three days later we had a proper Pacific Northwest downpour. Every note was actual music. I sat at the kitchen window with my husband for forty minutes and we did not talk."</p>
+    <p class="review-author">Sarah M., Tacoma, Washington</p>
+  </div>
+  <div class="review">
+    <p class="stars">★★★★★</p>
+    <p class="review-text">"We get a lot of rain in Seattle. The drum sits on the railing of the back deck year-round. The grey afternoons used to be the worst part of the year. They are now my favourite."</p>
+    <p class="review-author">Jennifer R., Seattle, Washington</p>
+  </div>
+  <div class="review">
+    <p class="stars">★★★★★</p>
+    <p class="review-text">"I sent one to my mother in the Blue Ridge Mountains. She set it on the front porch and told me she now waits for the rain the way you wait for a friend who is always late but always worth it."</p>
+    <p class="review-author">Linda H., Charlotte, North Carolina</p>
+  </div>
+
+  <h2>Three Honest Questions Before You Order</h2>
+  <div class="faq-item">
+    <p class="faq-q">"Where do I put it, and won't it rust?"</p>
+    <p class="faq-a">Anywhere the rain can reach: a tree stump, a garden bench, a porch railing, a balcony rail. It's powder-coated carbon steel made to live outdoors all year. Maria's own has stayed on the same stump for ten years. Most owners never bring it inside.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">"What if we hardly get any rain?"</p>
+    <p class="faq-a">Pour a watering can slowly from about two feet above it and you'll get a proper little shower of notes. That's exactly how Maria tests every drum. A garden hose held just above the surface works too.</p>
+  </div>
+  <div class="faq-item">
+    <p class="faq-q">"What if I don't love it?"</p>
+    <p class="faq-a">You have 30 days to send it back for a full refund, no questions asked. Just email the support team and they'll sort it out.</p>
+  </div>
+
+  <h2>The Next Time It Rains</h2>
+  <p>Think about the next grey afternoon at your house.</p>
+  <p>You can spend it the way you always have, waiting for it to pass. Or you can make a cup of tea, sit by the window and listen to your garden play music, the way Helen did, and Carol, and Maria herself.</p>
+  <p>The final run is on her bench right now, and when it's gone, it's gone.</p>
+
+  <div class="cta">
+    <a class="cta-btn" href="https://track.lovethenew.me/click" rel="nofollow">Check Availability</a>
+    <p class="cta-sub">Hand-tuned by Maria in Port Townsend, Washington. Sealed in a cloth pouch with her handwritten note.</p>
+  </div>
+
+
+  <footer class="site-footer">
+    <nav>
+      <button type="button" data-open="privacy">Privacy Policy</button> ·
+      <button type="button" data-open="terms">Terms of Service</button>
+    </nav>
+    <p>This page is an advertisement and not a news article.</p>
+    <p>© 2026 Made Special. All rights reserved.</p>
+  </footer>
+
+</main>
+
+<dialog class="legal" id="privacy" aria-labelledby="privacy-title">
+  <div class="legal-head">
+    <h2 id="privacy-title">Privacy Policy</h2>
+    <button type="button" class="legal-close" data-close aria-label="Close">×</button>
+  </div>
+  <div class="legal-body">
+    <p class="eff">Effective date: October 17, 2026</p>
+    <p>This Privacy Policy explains how Made Special (“Made Special,” “we,” “us,” or “our”), operated by madespecial.store, collects, uses and shares information when you visit this website (the “Site”).</p>
+
+    <h3>1. Information we collect</h3>
+    <ul>
+      <li><strong>Information collected automatically.</strong> When you visit the Site, we and our service providers automatically collect certain information about your device and visit. This includes IP address, browser type, operating system, referring URL, pages viewed, time spent on pages, links clicked, and approximate location derived from your IP address.</li>
+      <li><strong>Cookies, pixels and similar technologies.</strong> We use cookies, local storage, web beacons and pixels, including analytics and attribution tools such as Triple Whale, to understand how visitors use the Site and to measure how our advertising performs.</li>
+      <li><strong>Information you provide.</strong> If you contact us by email, we collect the information you choose to give us, such as your name, email address and the content of your message.</li>
+    </ul>
+
+    <h3>2. How we use information</h3>
+    <ul>
+      <li>To operate, maintain and improve the Site</li>
+      <li>To analyze traffic and measure the effectiveness of our advertising and marketing</li>
+      <li>To show you relevant advertising on other websites and platforms</li>
+      <li>To respond to your questions and requests</li>
+      <li>To detect and prevent fraud, abuse and security incidents, and to comply with legal obligations</li>
+    </ul>
+
+    <h3>3. How we share information</h3>
+    <p>We do not sell your personal information for money. We may share information with:</p>
+    <ul>
+      <li><strong>Service providers</strong> who help us host, analyze and run the Site, such as analytics, attribution and hosting providers</li>
+      <li><strong>Advertising partners</strong> who help us measure ads and deliver them to you. Under some state laws, this kind of sharing may count as “selling” or “sharing” for targeted advertising.</li>
+      <li><strong>Merchant partners.</strong> When you click a link on this Site, you are taken to a third-party store. That store may receive information about your visit, such as the referring page and campaign parameters.</li>
+      <li><strong>Legal and safety.</strong> When required by law, or to protect the rights, property or safety of us, our users or others</li>
+      <li><strong>Business transfers.</strong> In connection with a merger, acquisition or sale of assets</li>
+    </ul>
+
+    <h3>4. Third-party websites</h3>
+    <p>This Site links to third-party websites, including online stores where products can be purchased. We do not control those sites, and their own privacy policies apply. Please review them before giving them any personal information.</p>
+
+    <h3>5. Your choices</h3>
+    <ul>
+      <li>You can block or delete cookies in your browser settings. Some features may not work properly if you do.</li>
+      <li>You can opt out of interest-based ads at <a href="https://optout.aboutads.info" target="_blank" rel="noopener">optout.aboutads.info</a> and <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener">networkadvertising.org/choices</a>.</li>
+      <li>Where supported, we honor Global Privacy Control (GPC) browser signals as a request to opt out of the sale or sharing of personal information.</li>
+    </ul>
+
+    <h3>6. Your privacy rights</h3>
+    <p>Depending on where you live, for example California or another U.S. state with a privacy law, or the EEA or UK, you may have the right to access, correct or delete your personal information, to opt out of its sale or sharing for targeted advertising, and to not be discriminated against for using these rights. To make a request, email us at <a href="mailto:support@madespecial.store">support@madespecial.store</a>. We may need to verify your identity before we can act on your request.</p>
+
+    <h3>7. Data retention and security</h3>
+    <p>We keep information only as long as we need it for the purposes described in this policy, unless the law requires us to keep it longer. We use reasonable safeguards to protect it, but no method of transmission or storage is 100% secure.</p>
+
+    <h3>8. Children’s privacy</h3>
+    <p>The Site is not directed to children under 16, and we do not knowingly collect personal information from them. If you believe a child has given us information, contact us and we will delete it.</p>
+
+    <h3>9. Changes to this policy</h3>
+    <p>We may update this Privacy Policy from time to time. The effective date above shows when it was last revised.</p>
+
+    <h3>10. Contact us</h3>
+    <p>madespecial.store<br>Email: <a href="mailto:support@madespecial.store">support@madespecial.store</a></p>
+  </div>
+</dialog>
+
+<dialog class="legal" id="terms" aria-labelledby="terms-title">
+  <div class="legal-head">
+    <h2 id="terms-title">Terms of Service</h2>
+    <button type="button" class="legal-close" data-close aria-label="Close">×</button>
+  </div>
+  <div class="legal-body">
+    <p class="eff">Effective date: October 17, 2026</p>
+    <p>These Terms of Service (“Terms”) govern your use of the Made Special website (the “Site”), operated by madespecial.store (“we,” “us,” or “our”). By using the Site, you agree to these Terms. If you do not agree, please do not use the Site.</p>
+
+    <h3>1. Advertising disclosure</h3>
+    <p>Content on this Site is advertising. Some articles are written in an editorial or story format to describe products. Stories, characters and situations may be dramatized or illustrative and should not be read as news reporting. We may earn money when you click links or buy products featured on the Site.</p>
+
+    <h3>2. Informational purposes only</h3>
+    <p>Content on the Site is provided for general information and entertainment. It is not professional, medical or financial advice. Product descriptions, results and experiences described may not be typical, and individual results vary.</p>
+
+    <h3>3. Purchases and third-party sites</h3>
+    <p>The Site does not sell products directly. Links may take you to third-party websites or stores. Any purchase you make is a transaction between you and that seller, under the seller’s own terms, shipping, return and refund policies. We are not responsible for the content, products, services or practices of third-party sites.</p>
+
+    <h3>4. Intellectual property</h3>
+    <p>The Made Special name and logo, along with the text, graphics and other content on the Site, are owned by us or our licensors and protected by intellectual property laws. You may not copy, reproduce, distribute or create derivative works from them without our prior written permission.</p>
+
+    <h3>5. Acceptable use</h3>
+    <p>You agree not to misuse the Site. This includes interfering with how it works, trying to gain unauthorized access, scraping it with automated tools, or using it for any unlawful purpose.</p>
+
+    <h3>6. Disclaimer of warranties</h3>
+    <p>THE SITE AND ITS CONTENT ARE PROVIDED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. THIS INCLUDES IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SITE WILL BE ACCURATE, UNINTERRUPTED OR ERROR-FREE.</p>
+
+    <h3>7. Limitation of liability</h3>
+    <p>TO THE FULLEST EXTENT PERMITTED BY LAW, WE WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING FROM OR RELATED TO YOUR USE OF THE SITE OR ANY THIRD-PARTY PRODUCT OR SITE. OUR TOTAL LIABILITY FOR ANY CLAIM RELATED TO THE SITE WILL NOT EXCEED ONE HUNDRED U.S. DOLLARS ($100).</p>
+
+    <h3>8. Indemnification</h3>
+    <p>You agree to indemnify and hold us harmless from any claims, losses or expenses, including reasonable attorneys’ fees, arising from your violation of these Terms or your misuse of the Site.</p>
+
+    <h3>9. Governing law</h3>
+    <p>These Terms are governed by the laws of the State of [STATE], without regard to its conflict-of-law rules. Any dispute will be resolved in the state or federal courts located in [COUNTY, STATE].</p>
+
+    <h3>10. Changes</h3>
+    <p>We may update these Terms at any time. If you keep using the Site after changes are posted, you accept the updated Terms.</p>
+
+    <h3>11. Contact us</h3>
+    <p>madespecial.store<br>Email: <a href="mailto:support@madespecial.store">support@madespecial.store</a></p>
+  </div>
+</dialog>
+
+<script>
+  (function(){
+    var pair=document.querySelector('.video-pair');
+    var vids=[].slice.call(pair.querySelectorAll('video'));
+    pair.hidden=true;
+    Promise.all(vids.map(function(v){
+      return fetch(v.getAttribute('src'),{method:'HEAD'}).then(function(r){return r.ok},function(){return false});
+    })).then(function(ok){
+      vids.forEach(function(v,i){if(!ok[i])v.closest('figure').remove()});
+      var left=pair.querySelectorAll('figure').length;
+      if(left===1)pair.style.gridTemplateColumns='minmax(0,360px)';
+      pair.hidden=left===0;
+    });
+  })();
+  document.querySelectorAll('[data-open]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var d=document.getElementById(btn.dataset.open);
+      d.showModal(); d.querySelector('.legal-body').scrollTop=0;
+    });
+  });
+  document.querySelectorAll('dialog.legal').forEach(function(d){
+    d.querySelector('[data-close]').addEventListener('click',function(){d.close()});
+    d.addEventListener('click',function(e){if(e.target===d)d.close()});
+  });
+</script>
+<script>
+  var AXON_EVENT_KEY = "39e4030b-05d4-4ccf-a868-d6a93ec89d02";
+  !function (e, r) { var t = ["https://s.axon.ai/pixel.js", "https://c.albss.com/p/l/loader.iife.js"]; if (!e.axon) { var a = e.axon = function () { a.performOperation ? a.performOperation.apply(a, arguments) : a.operationQueue.push(arguments) }; a.operationQueue = [], a.ts = Date.now(), a.eventKey = AXON_EVENT_KEY; for (var n = r.getElementsByTagName("script")[0], o = 0; o < t.length; o++) { var i = r.createElement("script"); i.async = !0, i.src = t[o], n.parentNode.insertBefore(i, n) } } }(window, document);
+  axon("init");
+  axon("track", "page_view");
+</script>
+<script src="https://track.lovethenew.me/unilpclick.js?attribution=lastpaid&cookiedomain=madespecial.store&cookieduration=90&defaultcampaignid=6ad2e27ca1aa4e05ecf9f580&regviewonce=false&script_id=6ad2f01dc46d3e3e01ba4bde"></script>
+<script>
+  // RedTrack counts an LP click only when the button still goes to /click.
+  // unilpclick.js stores the click id for this visit. Passing that same id as
+  // clickid continues the click instead of opening a second one. The product
+  // page is the offer URL inside RedTrack, not the button address.
+  (function () {
+    var CLICK = "https://track.lovethenew.me/click";
+    function clickId() {
+      try {
+        var s = sessionStorage.getItem("rtkclickid");
+        if (s && s !== "undefined") return s;
+      } catch (e) {}
+      var m = document.cookie.match(/(?:^|; )rtkclickid-store=([^;]+)/);
+      if (!m || !m[1] || m[1] === "undefined") return "";
+      try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+    }
+    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid|wacid|wasid|waid)$/i;
+    function okVal(v) {
+      v = String(v == null ? "" : v).trim();
+      if (!v || v.length > 500) return "";
+      if (/^(undefined|null|none|n\/a)$/i.test(v)) return "";
+      if (/^__[A-Z0-9_]+__$/i.test(v) || /[{}<>]/.test(v)) return "";
+      return v;
+    }
+    function hasKey(u, k) {
+      var found = false;
+      u.searchParams.forEach(function (_, key) {
+        if (key.toLowerCase() === String(k).toLowerCase()) found = true;
+      });
+      return found;
+    }
+    function put(u, k, v, overwrite) {
+      v = okVal(v);
+      if (!v || !CARRY.test(k)) return;
+      if (hasKey(u, k)) {
+        if (!overwrite) return;
+        var drop = [];
+        u.searchParams.forEach(function (_, key) {
+          if (key.toLowerCase() === String(k).toLowerCase()) drop.push(key);
+        });
+        drop.forEach(function (key) { u.searchParams.delete(key); });
+      }
+      u.searchParams.set(k, v);
+    }
+    function stored(name) {
+      var m = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)"));
+      if (m && m[1]) {
+        try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+      }
+      try { return localStorage.getItem(name) || ""; } catch (e) { return ""; }
+    }
+    function apply(a) {
+      var u = new URL(CLICK);
+      try {
+        var current = new URL(a.href, location.href);
+        if (current.hostname === "track.lovethenew.me") {
+          var existingClick = current.searchParams.get("clickid");
+          var existingRef = current.searchParams.get("referrer");
+          if (okVal(existingClick)) u.searchParams.set("clickid", existingClick);
+          if (existingRef) u.searchParams.set("referrer", existingRef);
+        }
+      } catch (e) {}
+      try {
+        new URLSearchParams(location.search).forEach(function (v, k) { put(u, k, v, true); });
+      } catch (e) {}
+      try {
+        var saved = JSON.parse(localStorage.getItem("ms_carry") || "null");
+        if (saved && saved.p && saved.exp > Date.now()) {
+          Object.keys(saved.p).forEach(function (k) { put(u, k, saved.p[k], false); });
+        }
+      } catch (e) {}
+      put(u, "ScCid", stored("ScCid"), false);
+      put(u, "_scid", stored("_scid"), false);
+      // Pinterest writes _epik on this domain. It has to ride on the click URL as epik.
+      put(u, "epik", stored("epik") || stored("_epik"), false);
+      put(u, "ttclid", stored("ttclid"), false);
+      put(u, "fbclid", stored("fbclid"), false);
+      var id = clickId();
+      if (id) u.searchParams.set("clickid", id);
+      if (!u.searchParams.get("referrer") && document.referrer) u.searchParams.set("referrer", document.referrer);
+      a.href = u.toString();
+      return !!id;
+    }
+    function paint() {
+      var ready = true;
+      document.querySelectorAll("a.cta-btn").forEach(function (a) {
+        if (!apply(a)) ready = false;
+      });
+      return ready;
+    }
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest && e.target.closest("a.cta-btn");
+      if (!a) return;
+      if (paint()) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+      e.preventDefault();
+      var n = 0;
+      var timer = setInterval(function () {
+        n += 1;
+        if (!paint() && n < 40) return;
+        clearInterval(timer);
+        location.href = a.href;
+      }, 100);
+    }, true);
+    // unilpclick.js appends clickid once its request returns. Keep rewriting the
+    // button until that has happened so the link carries this visit's id once.
+    var n = 0;
+    var timer = setInterval(function () {
+      n += 1;
+      paint();
+      if (n >= 40) clearInterval(timer);
+    }, 100);
+  })();
+</script>
+
+</body>
+</html>
