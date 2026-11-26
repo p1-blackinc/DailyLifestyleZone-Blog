@@ -87,7 +87,7 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
   
     // ---- v2: carry the other ad params across the lander -> store hop ----
     var CARRY_KEY = "ms_carry", CARRY_DAYS = 30;
-    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid)$/i;
+    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid|rtclickid)$/i;
     function okVal(v) {
       v = String(v == null ? "" : v).trim();
       if (!v || v.length > 500) return "";
@@ -654,7 +654,7 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
   axon("init");
   axon("track", "page_view");
 </script>
-<script src="https://track.lovethenew.me/unilpclick.js?attribution=lastpaid&cookiedomain=dailylifestylezone.com&cookieduration=90&defaultcampaignid=6ad2e27ca1aa4e05ecf9f580&regviewonce=false&script_id=6ad2f01dc46d3e3e01ba4bde"></script>
+<script src="https://track.lovethenew.me/unilpclick.js?attribution=lastpaid&cookiedomain=madespecial.store&cookieduration=90&defaultcampaignid=6ad2e27ca1aa4e05ecf9f580&regviewonce=false&script_id=6ad2f01dc46d3e3e01ba4bde"></script>
 <script>
   // RedTrack counts an LP click only when the button still goes to /click.
   // unilpclick.js stores the click id for this visit. Passing that same id as
@@ -671,7 +671,7 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
       if (!m || !m[1] || m[1] === "undefined") return "";
       try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
     }
-    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid)$/i;
+    var CARRY = /^(?:utm_[a-z0-9_]+|tw_[a-z0-9_]+|ttclid|epik|fbclid|gclid|gbraid|wbraid|msclkid|rdt_cid|twclid|sccid|sc_click_id|_scid|aleid|alart|axeid|_?ref_id|cmpid|rtkcid|rtclickid)$/i;
     function okVal(v) {
       v = String(v == null ? "" : v).trim();
       if (!v || v.length > 500) return "";
@@ -690,7 +690,7 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
       v = okVal(v);
       if (!v || !CARRY.test(k)) return;
       if (hasKey(u, k)) {
-        if (!overwrite) return;
+        if (!overwrite && okVal(u.searchParams.get(k))) return;
         var drop = [];
         u.searchParams.forEach(function (_, key) {
           if (key.toLowerCase() === String(k).toLowerCase()) drop.push(key);
@@ -708,6 +708,14 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
     }
     function apply(a) {
       var u = new URL(CLICK);
+      var here = new URLSearchParams(location.search);
+      // 1. Every parameter the visitor arrived with goes through exactly as received
+      //    (gclid, gbraid, wbraid, rtclickid, tw_*, utm_* and anything else).
+      here.forEach(function (v, k) {
+        if (/^(clickid|referrer)$/i.test(k)) return; // set below from this visit
+        u.searchParams.append(k, v);
+      });
+      // 2. Keep clickid/referrer already on the button, if unilpclick.js set them.
       try {
         var current = new URL(a.href, location.href);
         if (current.hostname === "track.lovethenew.me") {
@@ -717,9 +725,7 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
           if (existingRef) u.searchParams.set("referrer", existingRef);
         }
       } catch (e) {}
-      try {
-        new URLSearchParams(location.search).forEach(function (v, k) { put(u, k, v, true); });
-      } catch (e) {}
+      // 3. Fill only missing or blank values from an earlier visit. Never replace a value from the URL.
       try {
         var saved = JSON.parse(localStorage.getItem("ms_carry") || "null");
         if (saved && saved.p && saved.exp > Date.now()) {
@@ -734,6 +740,8 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
       put(u, "fbclid", stored("fbclid"), false);
       var id = clickId();
       if (id) u.searchParams.set("clickid", id);
+      // rtclickid: keep the one from the URL; otherwise use this visit's RedTrack click id.
+      if (!okVal(u.searchParams.get("rtclickid")) && id) u.searchParams.set("rtclickid", id);
       if (!u.searchParams.get("referrer") && document.referrer) u.searchParams.set("referrer", document.referrer);
       a.href = u.toString();
       return !!id;
@@ -759,6 +767,12 @@ window.TriplePixelData={TripleName:"0muhvz-sr.myshopify.com",ver:"2.18",plat:"SH
         location.href = a.href;
       }, 100);
     }, true);
+    // Runs after every other click handler, right before the browser follows the link,
+    // so nothing else can strip the parameters off the href.
+    window.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest && e.target.closest("a.cta-btn");
+      if (a && !e.defaultPrevented) apply(a);
+    }, false);
     // unilpclick.js appends clickid once its request returns. Keep rewriting the
     // button until that has happened so the link carries this visit's id once.
     var n = 0;
